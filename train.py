@@ -77,10 +77,10 @@ def train(rank, args, shared_model, optimizer):
             log_probs.append(log_prob)
             if done:
                 total_count, last_entropy, count_matrix, search_idx = reset_intrinsic_param()
-                #rewards.append(reward_extrinsic + reward_intrinsic)
+                # rewards.append(reward_extrinsic + reward_intrinsic)
                 reward_extrinsic = 0
             else:
-                #rewards.append(0 + reward_intrinsic)
+                # rewards.append(0 + reward_intrinsic)
                 pass
             rewards.append(game_reward + reward_intrinsic)
 

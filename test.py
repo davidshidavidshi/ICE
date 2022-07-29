@@ -58,8 +58,10 @@ def test(rank, args, shared_model):
         with torch.no_grad():
             value, logit, (hx, cx) = model((state.unsqueeze(0).unsqueeze(0), (hx, cx)))
         prob = F.softmax(logit, dim=-1)
-        action = prob.multinomial(num_samples=1).detach()
-        #action = prob.max(1, keepdim=True)[1].numpy()
+        if 'gridworld' in args.env_name or 'Montezuma' in args.env_name:
+            action = prob.multinomial(num_samples=1).detach()
+        else:
+            action = prob.max(1, keepdim=True)[1].numpy()
         state, reward, done, info = env.step(action.item())
         if 'Montezuma' in args.env_name:
             done = done or episode_length >= args.max_episode_length or reward != 0

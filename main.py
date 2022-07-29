@@ -26,7 +26,7 @@ parser.add_argument('--num-steps', type=int, default=20)
 parser.add_argument('--max-episode-length', type=int, default=4000)
 # ALE/MontezumaRevenge-v5, gridworld, PongDeterministic-v4, gridworldwall, BreakoutDeterministic-v4
 parser.add_argument('--env-name', default='BreakoutDeterministic-v4')
-parser.add_argument('--intrinsic-coef', type=float, default=1)
+parser.add_argument('--intrinsic-coef', type=float, default=0)
 parser.add_argument('--load-model', default=False)
 
 
