@@ -58,7 +58,8 @@ def train(rank, args, shared_model, optimizer):
                 done = done or episode_length >= args.max_episode_length or game_reward != 0
             else:
                 done = done or episode_length >= args.max_episode_length
-            game_reward = max(min(game_reward, 40), -40)
+            if 'Mario' in args.env_name:
+                game_reward = 0 # game_reward/2
             reward_extrinsic += game_reward
 
             if done:

@@ -2,12 +2,18 @@ import cv2
 import gym
 import numpy as np
 import copy
+from nes_py.wrappers import JoypadSpace
+import gym_super_mario_bros
+from gym_super_mario_bros.actions import RIGHT_ONLY, SIMPLE_MOVEMENT, COMPLEX_MOVEMENT 
 
 def create_env(env_id):
     if env_id == 'gridworld':
         env = ExplorationGame(40)
     elif env_id == 'gridworldwall':
         env = ExplorationGameWall(40)
+    elif env_id == 'SuperMarioBros-v3':
+        env = gym_super_mario_bros.make('SuperMarioBros-1-1-v3')
+        env = JoypadSpace(env, COMPLEX_MOVEMENT)
     else:
         env = gym.make(env_id)
     return env
@@ -38,6 +44,12 @@ def _process_frame(frame, env_name):
         frame[frame==142] = 0.5
         frame[frame>1] = 1
         return frame
+
+    elif 'Mario' in env_name:
+        frame = cv2.resize(frame, (40, 40))
+        frame = frame[:,:,0]
+        frame = frame/255
+        return frame.astype(np.float32)
 
 class ExplorationGame(object):
     def __init__(self, size=40):

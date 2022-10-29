@@ -24,9 +24,9 @@ parser.add_argument('--seed', type=int, default=1)
 parser.add_argument('--num-processes', type=int, default=8)
 parser.add_argument('--num-steps', type=int, default=20)
 parser.add_argument('--max-episode-length', type=int, default=4000)
-# ALE/MontezumaRevenge-v5, gridworld, PongDeterministic-v4, gridworldwall, BreakoutDeterministic-v4
-parser.add_argument('--env-name', default='BreakoutDeterministic-v4')
-parser.add_argument('--intrinsic-coef', type=float, default=0)
+# ALE/MontezumaRevenge-v5, gridworld, PongDeterministic-v4, gridworldwall, BreakoutDeterministic-v4, 'SuperMarioBros-v0'
+parser.add_argument('--env-name', default='SuperMarioBros-v3')
+parser.add_argument('--intrinsic-coef', type=float, default=0.0)
 parser.add_argument('--load-model', default=False)
 
 
