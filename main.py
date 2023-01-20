@@ -25,6 +25,7 @@ parser.add_argument('--num-processes', type=int, default=8)
 parser.add_argument('--num-steps', type=int, default=20)
 parser.add_argument('--max-episode-length', type=int, default=4000)
 # ALE/MontezumaRevenge-v5, gridworld, PongDeterministic-v4, gridworldwall, BreakoutDeterministic-v4, 'SuperMarioBros-v0'
+# For Pong Sparse Reward, Please check line 81-86 in train.py for minor adjustment
 parser.add_argument('--env-name', default='ALE/MontezumaRevenge-v5')
 parser.add_argument('--intrinsic-coef', type=float, default=1.0)
 parser.add_argument('--load-model', default=False)
